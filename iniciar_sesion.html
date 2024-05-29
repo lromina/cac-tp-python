@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/estilos.css">
+    <link rel="icon" href="/static/img/favicon.ico">
+    <title>Cuchara y Sazón</title>
+
+    <!--Para tener los iconos de las redes-->
+    <script src="https://kit.fontawesome.com/83ada6c78d.js" crossorigin="anonymous"></script>
+    <!--Para tener las fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+
+    <!--Boostrap-->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        <section class="container">        
+            <nav class="primerDiv">
+                <a href="index.html">
+                    <img src="/static/img/logo_trial.png" class="img1">
+                </a>     
+                
+                <!--Navegador de Escritorio-->
+                <div class="last-links desktop-nav">
+                    <div class="dropdown">
+                        <a href="" class="dropbtn">Categorías</a>
+                        <div class="dropdown-content">
+                            <a href="">Panadería</a>
+                            <a href="">Pastelería</a>
+                            <a href="">Carnes</a>
+                            <a href="">Pastas</a>
+                            <a href="">Low cost</a>
+                        </div>
+                    </div>                
+                    <a href="quienes_somos.html">Quienes Somos</a>
+                    <!-- <span class="spacer"></span> -->
+                    <a href="iniciar_sesion.html">Iniciar Sesion</a>        
+                </div>
+
+                <!-- Menu Hamburgueza-->
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <label for="menu-toggle" class="menu-toggle-icon">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <div class="last-links mobile-nav">
+                    <div class="dropdown">
+                        <a href="" class="dropbtn">Categorías</a>
+                        <div class="dropdown-content">
+                            <a href="">Panadería</a>
+                            <a href="">Pastelería</a>
+                            <a href="">Carnes</a>
+                            <a href="">Pastas</a>
+                            <a href="">Low cost</a>
+                        </div>
+                    </div>                
+                    <a href="quienes_somos.html">Quienes Somos</a>
+                     <!-- <span class="spacer"></span>  -->
+                    <a href="iniciar_sesion.html">Iniciar Sesion</a>        
+                </div>
+         
+            </nav>        
+        
+        </section>
+
+    </header>
+    
+    <main>
+        <section class="main-form">
+            <div class="container-form">
+                <h2>Iniciar Sesion: </h2>
+                <form action="" class="form-registro">
+                    <label for="usuario">Usuario:
+                        <input type="usuario" name="usuario" placeholder="Ingrese su usuario">
+                    </label>
+                
+                    <label for="clave">Contraseña:
+                        <input type="password" name="clave" placeholder="Ingrese su contraseña">
+                    </label>   
+                    
+                    <div class="button-inicio">
+                        <input type="submit" onclick="alert('Debes Registrarte')" value="Ingresar">
+                        <br><br><br>
+                        <a class="registro" href="registrate.html">Regístrate</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+    </main>
+    <footer>
+        <a href="">Terminos y condiciones</a>
+        <a href="">Preguntas Frecuentes</a>
+        <a href="">Ayuda</a>
+        <a href=""><i class="fas fa-question-circle"></i></a>
+        <div class="redes-sociales">
+            <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+
+        <p>&copy; Todos los derechos reservados</p>
+
+
+
+    </footer>
+
+    <script src="/static/js/index.js"></script>
+</body>
+
+</html>
