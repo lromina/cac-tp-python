@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -61,62 +61,37 @@ def iniciar_sesion():
 def create():
     return render_template('recetario/create.html')
 
+@app.route('/store', methods=['POST'])
+def storage():
+    #RECIBIR LOS VALORES DEL FORMULARIO y los guarda en variables
+    _nombre = request.form['nombre']
+    _tiempo = request.form['tiempo']
+    _ingredientes = request.form['ingredientes']
+    _pasos = request.form['pasos']
+    _categoria = request.form['categoria']
+    _dificultad = request.form['dificultad']
+    _imagen = request.files['imagen']
+    
+    #guardamos los datos en una tupla
+    
+    datos = (_nombre, _tiempo, _ingredientes, _pasos, _categoria, _dificultad, _imagen.filename)
+    
+    #Armamos la sentencia SQL para subir los datos. 
+    
+    sql = "INSERT INTO recetas (id, nombre, tiempo, ingredientes, pasos, categoria, dificultad, imagen)\
+        VALUES (NULL, %s, %s, %s, %s, %s, %s, %s)"
+ 
+    conn = mysql.connection
+    cursor = conn.cursor()
+    cursor.execute(sql, datos)
+    # Confirmar la transacción
+    conn.commit()
+    
+     # Usar flash para mostrar el mensaje de éxito
+    # flash('Receta creada satisfactoriamente')
+
+    return redirect('create')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-# from flask import Flask, render_template
-# from flask_mysqldb import MySQL
-
-# #IMPORTAMOS EL ERROR PARA MANEJAR LA CONEXION CON LA BASE DE DATOS
-
-# import MySQLdb
-
-# # Crear una aplicación
-# app = Flask(__name__)
-
-# # Configuración de la base de datos
-# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-# app.config['MYSQL_DATABASE_USER'] = 'root'  # Usuario MySQL
-# app.config['MYSQL_DATABASE_PASSWORD'] = ''  # Contraseña MySQL
-# app.config['MYSQL_DATABASE_DB'] = 'bd_recetario'  # Nombre de la base de datos
-
-# # Inicializamos MySQL
-# mysql = MySQL(app)
-
-# # Ruta de la raiz del sitio
-# @app.route('/')
-# def index():
-#     # Creamos una variable que va a contener la consulta sql
-#     sql = """
-#     INSERT INTO recetas (id, nombre, tiempo, ingredientes, pasos, categoria, dificultad, imagen)
-#     VALUES (NULL, 'Pastas con Atun', '16 minutos', 
-#             '1 Cucharada de aceite de oliva - 1 Pimiento rojo cortado en bastones - Taza de cebolla picada - 3 Cucharadas de Salsa de Soya - 1 crema de leche - Latas de atún en agua (130 g c/u)', 
-#             'En una sartén, calienta el aceite de oliva y fríe los pimientos y la cebolla hasta que doren ligeramente. En un tazón, mezcla la pasta con la Salsa de Soya, la crema, el atún y la mezcla de pimientos y cebolla. Mezcla hasta integrar, sirve en un plato y disfruta.', 
-#             'pastas', 'baja', 
-#             'https://www.recetasnestle.com.mx/sites/default/files/styles/recipe_detail_desktop/public/srh_recipes/7bbf8946c57d7f04ac3fb68174372128.webp?itok=YAZf8D5v')
-#     """
-    
-#     try:
-#         # Conectamos a la base de datos
-#         conn = mysql.connection
-#         cursor = conn.cursor()
-        
-#         # Ejecutamos la consulta sql
-#         cursor.execute(sql)
-        
-#         # Commiteamos y cerramos la conexión
-#         conn.commit()
-#         cursor.close()
-#     except MySQLdb.OperationalError as e:
-#         print(f"Error de conexión: {e}")
-#         return "Error de conexión a la base de datos"
-#     except Exception as e:
-#         print(f"Error al ejecutar la consulta: {e}")
-#         return "Error al acceder a la base de datos"
-    
-#     return render_template('recetario/index.html') # Me devuelve el index
-
-# # Estas lineas son requeridas por Python para empezar a trabajar con la app
-# if __name__ == '__main__':
-#     app.run(debug=True)

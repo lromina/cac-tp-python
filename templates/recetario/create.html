@@ -77,13 +77,24 @@
         <section class="main-form">
             <div class="container-form">
                 <h2>Crear Receta</h2>
-                <form action="" class="form-registro" id="formRegister" method="get">
+
+                 <!-- Mostrar mensajes flash -->
+                 {% with messages = get_flashed_messages() %}
+                 {% if messages %}
+                   <div class="alert alert-success">
+                     {{ messages[0] }}
+                   </div>
+                 {% endif %}
+               {% endwith %}
+
+
+                <form action="/store" class="form-registro" id="formRegister" method="POST" enctype="multipart/form-data">
                     <label for="firstname">(*)Nombre: <br>
-                    <input type="text" id="firstname" name="firstname" placeholder="Ingrese su nombre">
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
                     </label>  
                     <div class="error" id="error-name"></div>                
                     <label for="tiempo">(*)Tiempo: <br>
-                    <input type="text" id="time" name="time" placeholder="Ingrese tiempo">
+                    <input type="text" id="tiempo" name="tiempo" placeholder="Ingrese tiempo">
                     </label>   
                     <div class="error" id="error-tiempo"></div>                 
                     <label for="ingredientes">(*)Ingredientes: <br>
@@ -95,29 +106,34 @@
                     </label>
                     <div class="error" id="error-pasos"></div>  
                     <label for="categoria">(*) Categoria:
-                        <select id="country" name="country">
+                        <select id="categoria" name="categoria">
                             <option value="">Seleccione: </option>
-                            <option value="Pn">Panaderia</option>
-                            <option value="Ps">Pasteleria</option>
-                            <option value="Cr">Carnes</option>
-                            <option value="Pt">Pastas</option>
-                            <option value="Lc">Low Cost</option>
-                            <option value="Ot">Otra</option>
+                            <option value="panaderia">Panaderia</option>
+                            <option value="pasteleria">Pasteleria</option>
+                            <option value="carnes">Carnes</option>
+                            <option value="pastas">Pastas</option>
+                            <option value="Low cost">Low Cost</option>
+                            <option value="Otros">Otra</option>
                                                       
                         </select>
                     </label> 
-
+                    <div class="error" id="error-dificutad"></div>
                     <label for="text">(*)Dificultad: <br>
-                    <input type="checkbox" id="1" value="baja" />Baja
-                    <input type="checkbox" id="2" value="media" /> Media
-                    <input type="checkbox" id="3" value="alta" /> Alta
+                        <input type="checkbox" id="1" name="dificultad" value="baja" /> Baja
+                        <input type="checkbox" id="2" name="dificultad" value="media" /> Media
+                        <input type="checkbox" id="3" name="dificultad" value="alta" /> Alta
                     </label>
+
+                    <label for="url">(*)Imagen Receta: <br>
+                        <input type="file" id="imagen" name="imagen" placeholder="Ingrese la URL de la imagen" accept="image/*">
+                    </label>
+                    <div class="error" id="error-url"></div>
 
 
                     <br><br>
                     <div class="button-inicio">
-                    <input type="submit" value="Crear">
-                    <a class="button" href="index.html"> Cancelar</a>
+                    <input type="submit"  onclick="alert('Receta creada satisfactoriamente')" value="Crear">
+                    <a class="button" href="/"> Cancelar</a>
                     </div>
                 </form>
             </div>
