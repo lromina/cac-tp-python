@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -47,6 +47,15 @@ def index():
 @app.route('/quienes_somos')
 def quienes_somos():
     return render_template('recetario/quienes_somos.html')
+
+@app.route('/registrate')
+def registrate():
+    return render_template('recetario/registrate.html')
+
+
+@app.route('/iniciar_sesion')
+def iniciar_sesion():
+    return render_template('recetario/iniciar_sesion.html')
     
 @app.route('/create')
 def create():
