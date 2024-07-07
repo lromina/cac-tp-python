@@ -22,28 +22,47 @@ def index():
         # Seleccionar la base de datos
         cursor.execute(f"USE {app.config['MYSQL_DB']}")
 
-        # Consulta SQL para insertar datos
-        # sql = "INSERT INTO recetas (nombre, tiempo, ingredientes, pasos, categoria, dificultad, imagen) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        # values = ('Pastas con Atun', '16 minutos', '1 Cucharada de aceite de oliva...', 'En una sartén, calienta el aceite de oliva...', 'pastas', 'baja', 'https://www.example.com/im...')
-
-        sql = "Select * from recetas"
+        # Consulta SQL para obtener datos
+        sql = "SELECT * FROM recetas"
         
         # Ejecutar la consulta SQL
-        # cursor.execute(sql, values)
         cursor.execute(sql)
 
-        # Confirmar la transacción
-        conn.commit()
-
-        # Cerrar cursor y conexión
-        # cursor.close()
-        # conn.close()
-
-        return render_template('recetario/index.html')
-
+        # Traer las recetas
+        recetas = cursor.fetchall()
+        
+        cursor.close()
+        
+        # Pasar las recetas a la plantilla
+        return render_template('recetario/index.html', recetas=recetas)
     except Exception as e:
         return f"Error: {str(e)}"
-    
+@app.route('/detalle-receta/<int:id>')
+def detalle_receta(id):
+    try:
+        # Crear una conexión
+        conn = mysql.connection
+        cursor = conn.cursor()
+
+        # Seleccionar la base de datos
+        cursor.execute(f"USE {app.config['MYSQL_DB']}")
+
+        # Consulta SQL para obtener los detalles de la receta
+        sql = "SELECT * FROM recetas WHERE id = %s"
+        
+        # Ejecutar la consulta SQL
+        cursor.execute(sql, (id,))
+
+        # Traer los detalles de la receta
+        receta = cursor.fetchone()
+        
+        cursor.close()
+        
+        # Pasar los detalles de la receta a la plantilla
+        return render_template('recetario/detalle-receta.html', receta=receta)
+    except Exception as e:
+        return f"Error: {str(e)}"
+
 @app.route('/quienes_somos')
 def quienes_somos():
     return render_template('recetario/quienes_somos.html')
@@ -91,6 +110,7 @@ def storage():
     # flash('Receta creada satisfactoriamente')
 
     return redirect('create')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -637,7 +637,40 @@ select {
     align-items: center;   
     
 }
+.btn-editar {
+    background-color: rgb(31, 100, 37);
+    color: black; 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btn-volver {
+    background-color: rgb(64, 100, 67);
+    color: rgb(255, 254, 254); 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btn-eliminar {
+    background-color: rgb(138, 16, 16);
+    color: rgb(0, 0, 0); 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.button-group button {
+    margin-right: 10px; 
+}
 
 /*---------------Boton para scroll--------------*/
 
@@ -663,3 +696,60 @@ select {
 }
 
 
+.container-card {
+    max-width: 800px; 
+    min-width: 400px; 
+    margin: 0 auto; 
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+/* Estilos de la tabla */
+.custom-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.custom-table thead {
+    background-color: #f8f9fa; 
+    border-bottom: 2px solid #dee2e6;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f1f2f4; 
+}
+
+
+.custom-table a {
+    color: #007bff; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-ver-detalle {
+    background-color: rgb(64, 100, 67);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block; 
+    width: 100%; 
+    text-align: center; 
+    text-decoration: none; 
+
+}
