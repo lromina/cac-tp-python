@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, send_from_directory, flash
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''  # Asegúrate de que esta contraseña sea correcta
 app.config['MYSQL_DB'] = 'bd_recetario'
-
+app.config['UPLOAD_FOLDER'] = 'C:\\Users\\Usuario\\Desktop\\python\\cac-tp-python\\uploads'
 mysql = MySQL(app)
 
 @app.route('/')
@@ -110,6 +110,11 @@ def storage():
     # flash('Receta creada satisfactoriamente')
 
     return redirect('create')
+
+
+@app.route('/uploads/<nombreFoto>')
+def uploads(nombreFoto):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], nombreFoto)
 
 
 if __name__ == '__main__':
