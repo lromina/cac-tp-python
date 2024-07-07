@@ -7,9 +7,10 @@ app = Flask(__name__)
 # Configuración de la base de datos
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''  # Asegúrate de que esta contraseña sea correcta
+app.config['MYSQL_PASSWORD'] = ''  
 app.config['MYSQL_DB'] = 'bd_recetario'
-app.config['UPLOAD_FOLDER'] = 'C:\\Users\\Usuario\\Desktop\\python\\cac-tp-python\\uploads'
+app.config['UPLOAD_FOLDER'] = 'uploads'
+
 mysql = MySQL(app)
 
 @app.route('/')
@@ -37,6 +38,35 @@ def index():
         return render_template('recetario/index.html', recetas=recetas)
     except Exception as e:
         return f"Error: {str(e)}"
+    
+@app.route('/listar-recetas')
+def listar_receta():
+    try:
+        # Crear una conexión
+        conn = mysql.connection
+        cursor = conn.cursor()
+
+        # Seleccionar la base de datos
+        cursor.execute(f"USE {app.config['MYSQL_DB']}")
+
+        # Consulta SQL para obtener los detalles de la receta
+        sql = "SELECT * FROM recetas"
+        
+        # Ejecutar la consulta SQL
+        cursor.execute(sql)
+
+        # Traer todos los detalles de las recetas
+        recetas = cursor.fetchall()
+        
+        cursor.close()
+        
+        # Pasar los detalles de la receta a la plantilla
+        return render_template('recetario/listar-recetas.html', recetas=recetas)
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+
+    
 @app.route('/detalle-receta/<int:id>')
 def detalle_receta(id):
     try:

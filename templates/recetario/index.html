@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <a href="quienes_somos">Quienes Somos</a>
-                    <a href="create">Crear recetas</a>
+                    <a href="listar-recetas">Recetas</a>
                 </div>
                 <input type="checkbox" id="menu-toggle" class="menu-toggle" />
                 <label for="menu-toggle" class="menu-toggle-icon">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <a href="quienes_somos">Quienes Somos</a>
-                    <a href="create">Crear recetas</a>
+                    <a href="listar-recetas">Recetas</a>
                 </div>
             </nav>
         </section>
@@ -112,32 +112,7 @@
                 <li><a href="#slide5">&bullet;</a></li>
             </ul>
         </div>
-        <section class="container">
-          <br /><br /><br />
-          <table class="custom-table">
-              <thead>
-                  <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Tiempo</th>
-                      <th scope="col">Dificultad</th>
-                      <th scope="col">Ver detalles</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {% for receta in recetas %}
-                  <tr>
-                      <td>{{ receta[0] }}</td>
-                      <td>{{ receta[1] }}</td>
-                      <td>{{ receta[2] }}</td>
-                      <td>{{ receta[6] }}</td>
-                      <td>
-                        <button class="btn-ver-detalle" onclick="window.location.href='{{ url_for('detalle_receta', id=receta[0]) }}';">Ver detalles</button>
-                    </td>
-                  {% endfor %}
-              </tbody>
-          </table>
-      </section>
+      
       
         <br /><br />
         <section class="container">
