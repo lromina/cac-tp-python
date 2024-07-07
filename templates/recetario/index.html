@@ -1,35 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/estilos.css">
-    <link rel="icon" href="/static/img/favicon.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/estilos.css" />
+    <link rel="icon" href="/static/img/favicon.ico" />
     <title>Cuchara y Sazón</title>
-
-    <!--Para tener los iconos de las redes-->
     <script src="https://kit.fontawesome.com/83ada6c78d.js" crossorigin="anonymous"></script>
-    <!--Para tener las fuentes-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet" />
 </head>
-
 <body>
     <header>
-        <section class="container">        
+        <section class="container">
             <nav class="primerDiv">
                 <a href="/">
-                    <img src="/static/img/logo_trial.png" class="img1">
-                </a>     
-                
-                <!--Navegador de Escritorio-->
+                    <img src="/static/img/logo_trial.png" class="img1" />
+                </a>
                 <div class="last-links desktop-nav">
                     <div class="dropdown">
                         <a href="" class="dropbtn">Categorías</a>
@@ -40,14 +28,11 @@
                             <a href="">Pastas</a>
                             <a href="">Low cost</a>
                         </div>
-                    </div>                
+                    </div>
                     <a href="quienes_somos">Quienes Somos</a>
-                    <!-- <span class="spacer"></span> -->
-                    <a href="create">Recetas</a>         
+                    <a href="create">Crear recetas</a>
                 </div>
-
-                <!-- Menu Hamburgueza-->
-                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <input type="checkbox" id="menu-toggle" class="menu-toggle" />
                 <label for="menu-toggle" class="menu-toggle-icon">
                     <i class="fas fa-bars"></i>
                 </label>
@@ -61,149 +46,124 @@
                             <a href="">Pastas</a>
                             <a href="">Low cost</a>
                         </div>
-                    </div>                
+                    </div>
                     <a href="quienes_somos">Quienes Somos</a>
-                     <!-- <span class="spacer"></span>  -->
-                    <a href="create">Recetas</a>        
+                    <a href="create">Crear recetas</a>
                 </div>
-         
-            </nav>    
-        
+            </nav>
         </section>
-
     </header>
-
-
     <main>
-
-
         <section class="container">
             <div class="items-search">
                 <h1>Recetas 100% Faciles</h1>
                 <form action="#" method="get" class="search_form">
                     <div id="input-search">
-                    <input type="text" id="search" name="search" placeholder="Buscá tu receta">
-                    <a id="a-search" href="detalle-receta.html"><i class="fas fa-search"></i></a>
-                    
+                        <input type="text" id="search" name="search" placeholder="Buscá tu receta" />
+                        <a id="a-search" href="detalle-receta.html"><i class="fas fa-search"></i></a>
                     </div>
                 </form>
             </div>
-
         </section>
-
-
-            <!--Carrucel-->
-            <div class="wrapper">
-        <ul class="slides">
-          <li class="slide" id="slide1">
-            <a href="#">
-              <p class="caption">PANADERIA</p>
-              <img src="/static/img/PANES 4.jpg" alt="1" />
-            </a>
-          </li>
-          <li class="slide" id="slide2">
-            <a href="#">
-              <p class="caption">PASTELERIA</p>
-              <img src="/static/img/POSTRES 1.jpg" alt="2" />
-            </a>
-          </li>
-          <li class="slide" id="slide3">
-            <a href="#">
-              <p class="caption">CARNES</p>
-              <img src="/static/img/COSTILLAS DE TERNERA 1.jpg" alt="3" />
-            </a>
-          </li>
-          <li class="slide" id="slide4">
-            <a href="#">
-              <p class="caption">PASTAS</p>
-              <img src="/static/img/PASTAS 6.2.jpg" alt="4" />
-            </a>
-          </li>
-          <li class="slide" id="slide5">
-            <a href="#">
-              <p class="caption">LOW COST</p>
-              <img src="/static/img/vegetales-en-cocina 2.jpg" alt="5" />
-            </a>
-          </li>
-          <li class="slide" id="slide1">
-            <a href="#">
-              <p class="caption">PANADERIA</p>
-              <img src="/static/img/PANES 4.jpg" alt="1" />
-            </a>
-          </li>
-        </ul>
-        <ul class="slider-controler">
-          <li><a href="#slide1">&bullet;</a></li>
-          <li><a href="#slide2">&bullet;</a></li>
-          <li><a href="#slide3">&bullet;</a></li>
-          <li><a href="#slide4">&bullet;</a></li>
-          <li><a href="#slide5">&bullet;</a></li>
-        </ul>
-      </div>
-
-
-              <!--Card-->
-        
-            <section class="container">
-            <br><br><br>
-            
-            <div class="card-container">
-                <div class="card">
-                    <a href="detalle-receta.html">
-                        <img src="/static/img/pollo_al_horno_peruano_73603_orig.jpg" alt="Card 1">
-                        <h2>Pollo al horno</h2>
+        <div class="wrapper">
+            <ul class="slides">
+                <li class="slide" id="slide1">
+                    <a href="#">
+                        <p class="caption">PANADERIA</p>
+                        <img src="/static/img/PANES 4.jpg" alt="1" />
                     </a>
-                </div>
-                <div class="card">
-                    <a href="detalle-receta.html">
-                        <img src="/static/img/Tarta-de-verduras-grilladas-con-Queso-Untable-Por-Salut-Light.jpg" alt="Card 2">
-                        <h2>Tarta de verduras</h2>
+                </li>
+                <li class="slide" id="slide2">
+                    <a href="#">
+                        <p class="caption">PASTELERIA</p>
+                        <img src="/static/img/POSTRES 1.jpg" alt="2" />
                     </a>
-                </div>
-                <div class="card">
-                    <a href="detalle-receta.html">
-                        <img src="/static/img/cheesecake-facil-con-leche-condensada-2000-4160526441114bf3ad8f3409586a2c8a.jpg"
-                            alt="Card 3">
-                        <h2>Cheesecake de frutos rojos</h2>
+                </li>
+                <li class="slide" id="slide3">
+                    <a href="#">
+                        <p class="caption">CARNES</p>
+                        <img src="/static/img/COSTILLAS DE TERNERA 1.jpg" alt="3" />
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <br><br>
-
+                </li>
+                <li class="slide" id="slide4">
+                    <a href="#">
+                        <p class="caption">PASTAS</p>
+                        <img src="/static/img/PASTAS 6.2.jpg" alt="4" />
+                    </a>
+                </li>
+                <li class="slide" id="slide5">
+                    <a href="#">
+                        <p class="caption">LOW COST</p>
+                        <img src="/static/img/vegetales-en-cocina 2.jpg" alt="5" />
+                    </a>
+                </li>
+                <li class="slide" id="slide1">
+                    <a href="#">
+                        <p class="caption">PANADERIA</p>
+                        <img src="/static/img/PANES 4.jpg" alt="1" />
+                    </a>
+                </li>
+            </ul>
+            <ul class="slider-controler">
+                <li><a href="#slide1">&bullet;</a></li>
+                <li><a href="#slide2">&bullet;</a></li>
+                <li><a href="#slide3">&bullet;</a></li>
+                <li><a href="#slide4">&bullet;</a></li>
+                <li><a href="#slide5">&bullet;</a></li>
+            </ul>
+        </div>
+        <section class="container">
+          <br /><br /><br />
+          <table class="custom-table">
+              <thead>
+                  <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Tiempo</th>
+                      <th scope="col">Dificultad</th>
+                      <th scope="col">Ver detalles</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for receta in recetas %}
+                  <tr>
+                      <td>{{ receta[0] }}</td>
+                      <td>{{ receta[1] }}</td>
+                      <td>{{ receta[2] }}</td>
+                      <td>{{ receta[6] }}</td>
+                      <td>
+                        <button class="btn-ver-detalle" onclick="window.location.href='{{ url_for('detalle_receta', id=receta[0]) }}';">Ver detalles</button>
+                    </td>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </section>
+      
+        <br /><br />
         <section class="container">
             <div id="hero">
                 <h2>Queres recibir Recetas!</h2>
-                <a href="registrate"><input type="submit" value="Registrate"></a>
+                <a href="registrate"><input type="submit" value="Registrate" /></a>
             </div>
         </section>
-
-
     </main>
     <footer>
         <section class="container">
-        <div>
-        <a href="">Terminos y condiciones</a>
-        <a href="">Preguntas Frecuentes</a>
-        <a href="">Ayuda</a>
-        <a href=""><i class="fas fa-question-circle"></i></a>
-        </div>
-        <div class="redes-sociales">
-            <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
-        </div>
-
-        <p>&copy; Todos los derechos reservados</p>
-
-    </section>
-
+            <div>
+                <a href="">Terminos y condiciones</a>
+                <a href="">Preguntas Frecuentes</a>
+                <a href="">Ayuda</a>
+                <a href=""><i class="fas fa-question-circle"></i></a>
+            </div>
+            <div class="redes-sociales">
+                <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <p>&copy; Todos los derechos reservados</p>
+        </section>
     </footer>
-
     <button id="scrollToTopButton">&#9650;</button>
     <script src="/static/js/index.js"></script>
-
 </body>
-
 </html>
