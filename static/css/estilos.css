@@ -753,3 +753,24 @@ select {
     text-decoration: none; 
 
 }
+
+.btn-same-size {
+    width: 100px; 
+    height: 40px; 
+    
+}
+
+.imagen-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+}
+
+.detalle-imagen{
+    width: 100%;
+    height: auto; 
+    max-width: 400px; 
+    max-height: 300px; 
+    object-fit: cover; 
+}
