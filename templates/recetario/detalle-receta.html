@@ -66,11 +66,15 @@
             <p><strong>Pasos:</strong> {{ receta[4] }}</p>
             <p><strong>Categoría:</strong> {{ receta[5] }}</p>
             <p><strong>Dificultad:</strong> {{ receta[6] }}</p>
-            <img src="/uploads/{{ receta[7] }}" alt="{{ receta[1] }}">
+            <div class="imagen-container">
+                <img src="/uploads/{{ receta[7] }}" alt="{{ receta[1] }}" class="detalle-imagen">
+            </div>
           
             <div class="button-group">
-                <button class="btn-editar">Editar</button>
-                <button class="btn-eliminar">Eliminar</button>
+                <button class="btn-editar btn-same-size">Editar</button>
+                <form action="{{ url_for('eliminar_receta', id=receta[0]) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn-eliminar btn-same-size" onclick="return confirm('¿Está seguro que desea eliminar esta receta?');">Eliminar</button>
+                </form>
             </div>
             </div>
         </section>

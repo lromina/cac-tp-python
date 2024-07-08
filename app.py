@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, send_from_directory, flash
+from flask import Flask, render_template, request, redirect, send_from_directory, url_for
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -146,6 +146,24 @@ def storage():
 def uploads(nombreFoto):
     return send_from_directory(app.config['UPLOAD_FOLDER'], nombreFoto)
 
+
+
+## Eliminar
+
+@app.route('/eliminar-receta/<int:id>', methods=['POST'])
+def eliminar_receta(id):
+    try:
+        conn = mysql.connection
+        cursor = conn.cursor()
+
+        sql = "DELETE FROM recetas WHERE id = %s"
+        cursor.execute(sql, (id,))
+        conn.commit()
+
+        cursor.close()
+        return redirect(url_for('listar_receta'))
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 if __name__ == '__main__':
     app.run(debug=True)
