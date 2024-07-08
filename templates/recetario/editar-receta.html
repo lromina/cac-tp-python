@@ -70,7 +70,7 @@
             <div class="container-form">
                 <h2>Editar Receta</h2>
 
-                <form action="{{ url_for('editar_receta', id=receta[0]) }}" class="form-registro" id="formRegister" method="POST" enctype="multipart/form-data">
+                <form action="{{ url_for('editar_receta', id=receta[0]) }}" class="form-registro centered-form" id="formRegister" method="POST" enctype="multipart/form-data">
                     <label for="id">ID: <br>
                         <input type="number" id="id" name="id" value="{{ receta[0] }}" readonly>
                     </label>
@@ -92,9 +92,9 @@
                     <label for="text">Dificultad: <br>
                         <input type="text" id="1" name="dificultad" value="{{ receta[6] }}"/>                        
                     </label>
-                    <label for="url">Imagen Receta: <br>
+                    <!--label for="url">Imagen Receta: <br>
                         <input type="file" id="imagen" name="imagen" accept="image/*" value="{{receta[7]}}">
-                    </label>
+                    </label-->
 
                     <br><br>
                     <div class="button-inicio">

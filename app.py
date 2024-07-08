@@ -165,61 +165,7 @@ def eliminar_receta(id):
     except Exception as e:
         return f"Error: {str(e)}"
     
-# @app.route('/editar-receta/<int:id>')
-# def editar_receta(id):
-#     try:
-#         conn = mysql.connection
-#         cursor = conn.cursor()
-        
-#         # Seleccionar la base de datos
-#         cursor.execute(f"USE {app.config['MYSQL_DB']}")
-
-#         sql = "SELECT * FROM recetas WHERE id = %s"
-        
-#         cursor.execute(sql, (id,))
-        
-#         receta = cursor.fetchall()
-        
-#         cursor.close()
-        
-#         return render_template('recetario/editar-receta.html', receta=receta)
-#     except Exception as e:
-#         return f"Error: {str(e)}"
-
-
-# @app.route('/editar-receta/<int:id>', methods=['GET', 'POST'])
-# def editar_receta(id):
-#     try:
-#         conn = mysql.connection
-#         cursor = conn.cursor()
-
-#         if request.method == 'POST':
-#             nombre = request.form['nombre']
-#             tiempo = request.form['tiempo']
-#             ingredientes = request.form['ingredientes']
-#             pasos = request.form['pasos']
-#             categoria = request.form['categoria']
-#             dificultad = request.form.getlist['dificultad']
-#             imagen = request.files['imagen']
-
-#             sql = """
-#                 UPDATE recetas
-#                 SET nombre = %s, tiempo = %s, ingredientes = %s, pasos = %s, categoria = %s, dificultad = %s, imagen = %s
-#                 WHERE id = %s
-#             """
-#             cursor.execute(sql, (nombre, tiempo, ingredientes, pasos, categoria, dificultad, imagen, id))
-#             conn.commit()
-
-#             return redirect(url_for('detalle_receta', id=id))
-
-#         sql = "SELECT * FROM recetas WHERE id = %s"
-#         cursor.execute(sql, (id,))
-#         receta = cursor.fetchone()
-#         cursor.close()
-
-#         return render_template('recetario/editar-receta.html', receta=receta)
-#     except Exception as e:
-#         return f"Error: {str(e)}"
+#### Editar########
 
 @app.route('/editar-receta/<int:id>', methods=['GET', 'POST'])
 def editar_receta(id):
@@ -233,23 +179,17 @@ def editar_receta(id):
         ingredientes = request.form['ingredientes']
         pasos = request.form['pasos']
         categoria = request.form['categoria']
-        dificultad = ','.join(request.form.getlist('dificultad'))  # Concatenar dificultades seleccionadas
-        imagen = request.files['imagen']
+        dificultad = request.form['dificultad'] 
         
-        # Si hay una nueva imagen, guardarla
-        # if imagen.filename != '':
-        #     filename = secure_filename(imagen.filename)
-        #     imagen.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        # else:
-        #     filename = None
-
-        # Actualizar la receta en la base de datos
+        
+        
+      
         sql = """
             UPDATE recetas
-            SET nombre = %s, tiempo = %s, ingredientes = %s, pasos = %s, categoria = %s, dificultad = %s, imagen = %s
+            SET nombre = %s, tiempo = %s, ingredientes = %s, pasos = %s, categoria = %s, dificultad = %s
             WHERE id = %s
         """
-        cursor.execute(sql, (nombre, tiempo, ingredientes, pasos, categoria, dificultad, imagen, id))
+        cursor.execute(sql, (nombre, tiempo, ingredientes, pasos, categoria, dificultad, id))
         conn.commit()
 
         return redirect('/listar-recetas')
