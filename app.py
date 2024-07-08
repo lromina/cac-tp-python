@@ -165,26 +165,102 @@ def eliminar_receta(id):
     except Exception as e:
         return f"Error: {str(e)}"
     
-@app.route('/editar-receta/<int:id>')
-def editar_receta(id):
-    try:
-        conn = mysql.connection
-        cursor = conn.cursor()
+# @app.route('/editar-receta/<int:id>')
+# def editar_receta(id):
+#     try:
+#         conn = mysql.connection
+#         cursor = conn.cursor()
         
-        # Seleccionar la base de datos
-        cursor.execute(f"USE {app.config['MYSQL_DB']}")
+#         # Seleccionar la base de datos
+#         cursor.execute(f"USE {app.config['MYSQL_DB']}")
 
-        sql = "SELECT * FROM recetas WHERE id = %s"
+#         sql = "SELECT * FROM recetas WHERE id = %s"
         
-        cursor.execute(sql, (id,))
+#         cursor.execute(sql, (id,))
         
-        receta = cursor.fetchall()
+#         receta = cursor.fetchall()
         
-        cursor.close()
+#         cursor.close()
         
-        return render_template('recetario/editar-receta.html', receta=receta)
-    except Exception as e:
-        return f"Error: {str(e)}"
+#         return render_template('recetario/editar-receta.html', receta=receta)
+#     except Exception as e:
+#         return f"Error: {str(e)}"
+
+
+# @app.route('/editar-receta/<int:id>', methods=['GET', 'POST'])
+# def editar_receta(id):
+#     try:
+#         conn = mysql.connection
+#         cursor = conn.cursor()
+
+#         if request.method == 'POST':
+#             nombre = request.form['nombre']
+#             tiempo = request.form['tiempo']
+#             ingredientes = request.form['ingredientes']
+#             pasos = request.form['pasos']
+#             categoria = request.form['categoria']
+#             dificultad = request.form.getlist['dificultad']
+#             imagen = request.files['imagen']
+
+#             sql = """
+#                 UPDATE recetas
+#                 SET nombre = %s, tiempo = %s, ingredientes = %s, pasos = %s, categoria = %s, dificultad = %s, imagen = %s
+#                 WHERE id = %s
+#             """
+#             cursor.execute(sql, (nombre, tiempo, ingredientes, pasos, categoria, dificultad, imagen, id))
+#             conn.commit()
+
+#             return redirect(url_for('detalle_receta', id=id))
+
+#         sql = "SELECT * FROM recetas WHERE id = %s"
+#         cursor.execute(sql, (id,))
+#         receta = cursor.fetchone()
+#         cursor.close()
+
+#         return render_template('recetario/editar-receta.html', receta=receta)
+#     except Exception as e:
+#         return f"Error: {str(e)}"
+
+@app.route('/editar-receta/<int:id>', methods=['GET', 'POST'])
+def editar_receta(id):
+    conn = mysql.connection
+    cursor = conn.cursor()
+    
+    if request.method == 'POST':
+        # Procesar el formulario de edición
+        nombre = request.form['nombre']
+        tiempo = request.form['tiempo']
+        ingredientes = request.form['ingredientes']
+        pasos = request.form['pasos']
+        categoria = request.form['categoria']
+        dificultad = ','.join(request.form.getlist('dificultad'))  # Concatenar dificultades seleccionadas
+        imagen = request.files['imagen']
+        
+        # Si hay una nueva imagen, guardarla
+        # if imagen.filename != '':
+        #     filename = secure_filename(imagen.filename)
+        #     imagen.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        # else:
+        #     filename = None
+
+        # Actualizar la receta en la base de datos
+        sql = """
+            UPDATE recetas
+            SET nombre = %s, tiempo = %s, ingredientes = %s, pasos = %s, categoria = %s, dificultad = %s, imagen = %s
+            WHERE id = %s
+        """
+        cursor.execute(sql, (nombre, tiempo, ingredientes, pasos, categoria, dificultad, imagen, id))
+        conn.commit()
+
+        return redirect('/listar-recetas')
+
+    # Obtener los datos de la receta para editar
+    cursor.execute("SELECT * FROM recetas WHERE id = %s", (id,))
+    receta = cursor.fetchone()
+    cursor.close()
+
+    return render_template('recetario/editar-receta.html', receta=receta)
+
 
 
 if __name__ == '__main__':

@@ -70,56 +70,36 @@
             <div class="container-form">
                 <h2>Editar Receta</h2>
 
-                {% for receta in recetas %}
-
-                <form action="{{ url_for('update_receta') }}" class="form-registro" id="formRegister" method="POST" enctype="multipart/form-data">
+                <form action="{{ url_for('editar_receta', id=receta[0]) }}" class="form-registro" id="formRegister" method="POST" enctype="multipart/form-data">
                     <label for="id">ID: <br>
-                    <input type="int" id="id" name="id" value="{{receta[0]}}">
-                    </label> 
+                        <input type="number" id="id" name="id" value="{{ receta[0] }}" readonly>
+                    </label>
                     <label for="name">Nombre: <br>
-                    <input type="text" id="nombre" name="nombre" value="{{receta[1]}}">
-                    </label>  
-                                    
+                        <input type="text" id="nombre" name="nombre" value="{{ receta[1] }}">
+                    </label>
                     <label for="tiempo">Tiempo: <br>
-                    <input type="text" id="tiempo" name="tiempo" value="{{receta[2]}}">
-                    </label>   
-                                   
+                        <input type="text" id="tiempo" name="tiempo" value="{{ receta[2] }}">
+                    </label>
                     <label for="ingredientes">Ingredientes: <br>
-                    <input type="text" id="ingredientes" name="ingredientes" value="{{receta[3]}}">
-                    </label>  
-                                      
+                        <input type="text" id="ingredientes" name="ingredientes" value="{{ receta[3] }}">
+                    </label>
                     <label for="text">Pasos: <br>
-                    <input type="text" id="pasos" name="pasos" value="{{receta[4]}}">
+                        <input type="text" id="pasos" name="pasos" value="{{ receta[4] }}">
                     </label>
-                      
                     <label for="categoria">Categoria:
-                        <select id="categoria" name="categoria">
-                            <option value="">Seleccione: </option>
-                            <option value="panaderia" {% if receta[5] == 'panaderia' %}selected{% endif %}>Panaderia</option>
-                            <option value="pasteleria"{% if receta[5] == 'pasteleria' %}selected{% endif %}>Pasteleria</option>
-                            <option value="carnes" {% if receta[5] == 'carnes' %}selected{% endif %}>Carnes</option>
-                            <option value="pastas" {% if receta[5] == 'pastas' %}selected{% endif %}>Pastas</option>
-                            <option value="Low cost" {% if receta[5] == 'Low Cost' %}selected{% endif %}>Low Cost</option>
-                            <option value="Otros" {% if receta[5] == 'otros' %}selected{% endif %}>Otra</option>
-                                                      
-                        </select>
-                    </label> 
-                    
-                    <label for="text">Dificultad: <br>
-                        <input type="checkbox" id="1" name="dificultad" value="baja"  {% if 'baja' in receta[6] %}checked{% endif %} /> Baja
-                        <input type="checkbox" id="2" name="dificultad" value="media"  {% if 'media' in receta[6] %}checked{% endif %}/> Media
-                        <input type="checkbox" id="3" name="dificultad" value="alta"  {% if 'alta' in receta[6] %}checked{% endif %} /> Alta
+                        <input type="text" id="categoria" name="categoria" value="{{ receta[5] }}">
                     </label>
-
+                    <label for="text">Dificultad: <br>
+                        <input type="text" id="1" name="dificultad" value="{{ receta[6] }}"/>                        
+                    </label>
                     <label for="url">Imagen Receta: <br>
                         <input type="file" id="imagen" name="imagen" accept="image/*" value="{{receta[7]}}">
                     </label>
-                    {%endfor%}
 
                     <br><br>
                     <div class="button-inicio">
-                    <input type="submit" value="Guardar">
-                    <a class="button" href="/listar-recetas"> Cancelar</a>
+                        <input type="submit" onclick="alert('Receta modificada satisfactoriamente')" value="Guardar">
+                        <a class="button" href="/listar-recetas">Cancelar</a>
                     </div>
                 </form>
             </div>
@@ -141,8 +121,7 @@
 
 
     </footer>
-    <button id="scrollToTopButton">&#9650;</button>
-    <script src="/static/js/index.js"></script>
+   
   
 
 </body>
