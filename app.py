@@ -164,6 +164,28 @@ def eliminar_receta(id):
         return redirect(url_for('listar_receta'))
     except Exception as e:
         return f"Error: {str(e)}"
+    
+@app.route('/editar-receta/<int:id>')
+def editar_receta(id):
+    try:
+        conn = mysql.connection
+        cursor = conn.cursor()
+        
+        # Seleccionar la base de datos
+        cursor.execute(f"USE {app.config['MYSQL_DB']}")
+
+        sql = "SELECT * FROM recetas WHERE id = %s"
+        
+        cursor.execute(sql, (id,))
+        
+        receta = cursor.fetchall()
+        
+        cursor.close()
+        
+        return render_template('recetario/editar-receta.html', receta=receta)
+    except Exception as e:
+        return f"Error: {str(e)}"
+
 
 if __name__ == '__main__':
     app.run(debug=True)

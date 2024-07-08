@@ -71,12 +71,12 @@
             </div>
           
             <div class="button-group">
-                <button class="btn-editar btn-same-size">Editar</button>
+                <button class="btn-editar btn-same-size" onclick="window.location.href='{{ url_for('editar_receta', id=receta[0]) }}';">Editar</button>
                 <form action="{{ url_for('eliminar_receta', id=receta[0]) }}" method="POST" style="display:inline;">
                     <button type="submit" class="btn-eliminar btn-same-size" onclick="return confirm('¿Está seguro que desea eliminar esta receta?');">Eliminar</button>
                 </form>
             </div>
-            </div>
+            
         </section>
     </main>
     <footer>
